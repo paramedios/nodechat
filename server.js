@@ -13,7 +13,17 @@ const server = express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const io = socketIO(server);
-
+axios.get('http://s2.netradiofm.com:5878/stats?sid=1&json=1')
+  .then(response => {
+    console.log(response.data.streamstatus);
+    console.log(response.data.streamstatus);
+	
+ connection.sendUTF('gf');
+})
+  .catch(error => {
+console.log(error);
+ connection.sendUTF('gggg');
+});
 
 
 io.on('connection', (socket) => {
